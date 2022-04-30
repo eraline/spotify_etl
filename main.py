@@ -1,15 +1,12 @@
 import sqlalchemy
 import sqlite3
 import pandas as pd
-from sqlalchemy.orm import sessionmaker
 import requests
-import json
 import datetime as dt
-from pprint import pprint
 
 DATABASE_LOCATION = 'sqlite:///my_played_tracks.sqlite'
-USER_ID = '314fk6fg3zwfxzzvsfpzktv6qgle'
-TOKEN = 'BQAVq1Mb7aP51pt7knvDooEuf8qvAsF74VV-u2hoERoRQm5ZFkDaCokWRVD9SKtVtLlDx6PZhucxLSeZgEJ_T7yYis5mNHbT9qOdgcKdZaiRS-4gG5Qs9a9b-KQIVA0_-WkJrwpbYRHRtP-lxg2SycPptYKEgkDi9e4lXOZZ'
+USER_ID = '' # put your spotify id here
+TOKEN = '' # put your auth token from spotify
 
 def validation(df):
     if df.empty:
@@ -45,7 +42,6 @@ if __name__ == '__main__':
     played_at_list = []
     dates_list = []
 
-    # pprint(data['items'][0]['track']['album']['artists'][0]['name'])
     for record in data['items']:
         song = record['track']['name']
         artist = record['track']['album']['artists'][0]['name']
@@ -90,5 +86,5 @@ if __name__ == '__main__':
         print("Data already exists in the database")
 
     conn.close()
-    print("Close database successfully")
+    print("Closed database successfully")
     
